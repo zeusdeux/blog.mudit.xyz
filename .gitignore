@@ -3,6 +3,7 @@
 !.prettier*
 !tslint*
 !tsconfig*
+!Readme*
 !next.config*
 !package*.json
 !now.json
