@@ -19,6 +19,13 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
           ))}
         </ul>
       </div>
+      <style jsx>
+        {`
+          div {
+            padding: 5rem 7rem;
+          }
+        `}
+      </style>
     </Layout>
   )
 }

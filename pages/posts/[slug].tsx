@@ -23,6 +23,13 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
           ) : null}
         </nav>
       </div>
+      <style jsx>
+        {`
+          div {
+            align-self: center;
+          }
+        `}
+      </style>
     </Layout>
   )
 }
