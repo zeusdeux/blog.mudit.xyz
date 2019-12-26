@@ -8,7 +8,11 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (
     <Layout>
       <div>
-        <p>omg</p>
+        <h1>Mudit’s thought dump</h1>
+        <p>Hello internet stranger!</p>
+        <p>
+          Below are list of things I have had rattling around in my head, dumped on your screen.
+        </p>
         <ul>
           {posts.map(post => (
             <li key={post.id}>
@@ -22,7 +26,7 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
       <style jsx>
         {`
           div {
-            padding: 5rem 7rem;
+            padding: 2rem calc(100% / 6);
           }
         `}
       </style>

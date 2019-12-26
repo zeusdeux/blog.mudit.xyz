@@ -3,27 +3,30 @@ import Header from './Header'
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="root">
-      <div className="content">
+    <div className="page">
+      <div className="root">
         <Header />
         {children}
       </div>
       <style jsx>
         {`
-          .root {
+          .page {
             width: 100vw;
             display: flex;
             flex-direction: column;
             align-items: center;
           }
 
-          .content {
+          .root {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             max-width: 960px;
             width: 100%;
             background-color: #f7f7f7;
+            box-shadow: inset 9px 0px 11px 0px #e2e2e2;
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
           }
 
           :global(*) {
@@ -33,7 +36,6 @@ const Layout: React.FC = ({ children }) => {
           :global(body) {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
               sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-            overflow: hidden;
           }
 
           :global(body, html) {

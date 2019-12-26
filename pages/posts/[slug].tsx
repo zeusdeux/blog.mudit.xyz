@@ -9,7 +9,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   return (
     <Layout>
       <div>
-        <Markdown source={post.markdown} />
+        <Markdown source={post.markdown} className="blog-post" />
         <nav>
           {post.previous ? (
             <Link href="/posts/[slug]" as={`/posts/${post.previous.slug}`}>
@@ -27,6 +27,35 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
         {`
           div {
             align-self: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem calc(100% / 6);
+          }
+
+          div > :global(.blog-post) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          div > :global(.blog-post h1) {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid black;
+            width: 100%;
+            text-align: center;
+            font-family: serif;
+            font-size: 3rem;
+          }
+
+          nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: inherit;
+            padding: 2rem;
           }
         `}
       </style>
@@ -45,14 +74,17 @@ PostPage.getInitialProps = async function(context): Promise<{ post: Post }> {
         title: 'My first post',
         markdown: `# First post
 
-Some example text
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis urna pretium, suscipit diam et, tincidunt nibh. Ut posuere, magna nec fringilla fringilla, lacus ipsum vestibulum mi, at aliquet nibh orci sed nunc. In efficitur sed massa eu hendrerit. Donec scelerisque porttitor felis a porta. Aenean feugiat semper blandit. Nam sem tellus, tempus sed nisi euismod, placerat blandit nisi. Maecenas suscipit odio vitae eros interdum, vitae elementum turpis molestie. Quisque pellentesque nunc elementum lacus mollis, pulvinar venenatis orci pellentesque.
 
 ## Subheading
 
-More awesome text
+Vestibulum pellentesque pharetra massa, commodo lobortis mauris ullamcorper non. Sed ac lectus vel libero scelerisque scelerisque et in libero. Etiam tincidunt feugiat nunc, nec facilisis nisi. Nam eleifend magna neque, vel dictum est vulputate non. Quisque condimentum neque faucibus metus efficitur, eu gravida enim interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit purus a accumsan elementum. Nunc cursus tempor magna non eleifend. Nulla luctus elit et mi dignissim, ut feugiat ligula condimentum.
 
 \`code block\`
 
+Morbi interdum felis et nisl luctus cursus. Aliquam nisi felis, consequat eu dictum sit amet, porta ut nibh. Donec elit risus, faucibus ut facilisis a, fermentum sit amet nunc. Duis eu viverra tortor. Nam viverra lectus vel felis mollis vulputate. Phasellus mauris ipsum, scelerisque eget gravida id, posuere id diam. Nunc et est volutpat, iaculis odio ac, facilisis felis. Duis non purus congue purus varius malesuada id sit amet augue. Vivamus sollicitudin mauris est, sed mollis elit molestie non. Proin lobortis imperdiet metus sit amet pellentesque. Sed dictum hendrerit nulla, vel condimentum ex pharetra eget. Aenean at placerat orci. Pellentesque et purus odio. Mauris vulputate feugiat neque, et blandit lectus ullamcorper sit amet. Phasellus et neque eget urna feugiat vulputate id nec mauris.
+
+Nullam vel vehicula quam, sit amet eleifend justo. Etiam mi lectus, dignissim id blandit eget, malesuada a nisi. Maecenas tristique non risus quis euismod. Suspendisse vehicula commodo pharetra. Nulla ultrices dignissim nisl, in placerat nisl egestas sit amet. Nullam quis justo vel augue cursus ultricies non ac eros. Nullam a dapibus nunc, quis auctor quam. Donec quis dignissim justo. Aliquam ex nunc, aliquam et cursus sed, bibendum at elit. Proin pellentesque dapibus felis, ac suscipit orci vestibulum eget. Curabitur at mattis sapien. Nullam ac tincidunt elit.
 `,
         next: {
           id: '2345',
