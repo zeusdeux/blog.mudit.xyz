@@ -28,6 +28,7 @@ const Layout: React.FC = ({ children }) => {
             border-top-left-radius: 0.5rem;
             border-bottom-left-radius: 0.5rem;
             border-left: 1px solid gainsboro;
+            line-height: 1.5rem;
           }
 
           :global(*) {
@@ -42,6 +43,17 @@ const Layout: React.FC = ({ children }) => {
           :global(body, html) {
             padding: 0;
             margin: 0;
+          }
+
+          :global(h1) {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid black;
+            width: 100%;
+            text-align: center;
+            font-family: serif;
+            font-size: 3rem;
+            line-height: 3rem;
           }
 
           :global(a, a:visited) {

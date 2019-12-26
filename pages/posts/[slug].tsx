@@ -33,12 +33,12 @@ const Nav: React.FC<{ post: Post }> = ({ post }) => {
       <style jsx>
         {`
           nav {
+            padding: 2rem;
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             text-align: center;
-            width: inherit;
-            padding: 2rem;
+            width: 100%;
           }
 
           nav > a {
@@ -74,25 +74,14 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
           div > :global(.blog-post) {
             display: flex;
             flex-direction: column;
-            // align-items: center;
             align-items: flex-start;
             margin-bottom: 2rem;
+            width: 100%;
           }
 
-          // div
-          //   > :global(.blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4, .blog-post
-          //     h5, .blog-post h6) {
-          //   align-self: center;
-          // }
-
-          div > :global(.blog-post h1) {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid black;
-            width: 100%;
-            text-align: center;
+          div > :global(.blog-post blockquote) {
+            font-style: italic;
             font-family: serif;
-            font-size: 3rem;
           }
         `}
       </style>
