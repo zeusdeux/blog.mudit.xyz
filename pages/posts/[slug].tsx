@@ -23,11 +23,11 @@ const Nav: React.FC<{ post: Post }> = ({ post }) => {
           <Link href="/posts/[slug]" as={`/posts/${post.next.slug}`}>
             <a title={post.next.title}>{post.next.title}</a>
           </Link>
-        ) : (
+        ) : post.previous ? (
           <Link href="/">
             <a title="Mudit’s blog post listing">Contents</a>
           </Link>
-        )}
+        ) : null}
       </nav>
 
       <style jsx>
@@ -145,6 +145,7 @@ By using the [\`<link>\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elem
 <!-- Preload resources -->
 <link href="/style.css" rel="preload" as="style"/>
 <link href="/app.js" rel="preload" as="script"/>
+
 <!-- Consume resources -->
 <link href="/style.css" rel="stylesheet"/>
 <script src="/app.js"></script>
@@ -166,9 +167,9 @@ Please do note that HTTP2 server push might not be a ["silver bullet from a gold
 
 I use it for this page you are currently viewing and if you do notice any problems, please do [write me on twitter](http://twitter.com/muditameta).
 
-### Prefetching assets/artifacts required for possible next transitions
+## Prefetching assets/artifacts required for possible next transitions
 
-### Deferred JS execution
+## Deferred JS execution
 
 `,
         previous: {
