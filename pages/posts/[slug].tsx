@@ -57,7 +57,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   return (
     <Layout>
       <div>
-        <Markdown source={post.markdown} className="blog-post" />
+        <Markdown source={post.markdown} className="blog-post" linkTarget="_blank" />
         <Nav post={post} />
       </div>
       <style jsx>
