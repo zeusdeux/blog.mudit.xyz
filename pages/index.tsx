@@ -54,7 +54,7 @@ Index.getInitialProps = async function(): Promise<{ posts: PostMetadata[] }> {
       {
         id: '2345',
         slug: 'second-post',
-        title: 'My second post'
+        title: 'Easy perceived performance wins for websites'
       },
       {
         id: '3456',

@@ -115,7 +115,7 @@ Nullam vel vehicula quam, sit amet eleifend justo. Etiam mi lectus, dignissim id
         next: {
           id: '2345',
           slug: 'second-post',
-          title: 'My second post'
+          title: 'Easy perceived performance wins for websites'
         }
       }
     }
@@ -124,20 +124,52 @@ Nullam vel vehicula quam, sit amet eleifend justo. Etiam mi lectus, dignissim id
       post: {
         id: '2345',
         slug: 'second-post',
-        title: 'My second post',
-        markdown: `# Second post
+        title: 'Easy perceived performance wins for websites',
+        markdown: `# Easy perceived performance wins for websites
 
-Some example text for second post
+This post will focus on some easy wins for perceived performance of your website. It won't cover all the possible ways but only the ones that I have tried and implemented. With that said, let's get started!
 
-## Subheading
+The first three strategies revolve around the \`Link HTTP\` header and/or the \`<link>\` HTML element. The last one is based on the \`<script>\` HTML element. Also, by resources I refer
 
-More awesome text
+## Preloading resources required for your app to load
 
-\`code block\`
+The core idea behind this easy win is to let the browser know what resources you want it to fetch (not execute) and keep ready for when your website requests it. This lets developers, for e.g., tell the browser to preload resources that they believe are critical for their application. These could range from JS bundles to CSS to fonts, etc.
 
-### Sub subheading
+Say that we deem \`/app.js\` and \`/style.css\` critical for the first load of our website, \`foo.bar.cat\`. We can let the browser know that it should start a high-priority, non-render-blocking, early fetch of the resources in two ways.
 
-omg man
+### By using the \`<link>\` html tag
+
+By using the [\`<link>\`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) tag in the html for \`foo.bar.cat\`, the following code tells the browser to preload the critical resources named above and then consume them.
+
+\`\`\`html
+<!-- Preload resources -->
+<link href="/style.css" rel="preload" as="style"/>
+<link href="/app.js" rel="preload" as="script"/>
+<!-- Consume resources -->
+<link href="/style.css" rel="stylesheet"/>
+<script src="/app.js"></script>
+\`\`\`
+
+When the browser's parser encounters the \`preload\` directives, it starts fetching the resources with high priority and in a non-render-blocking fashion. By decoupling resource fetching from resource execution, we now have the flexibility of implementing any resource loading/execution patterns to further optimize our website.
+
+### By adding the \`Link\` http header
+
+Another way to tell the browser to preload resources we want it to is by adding the [\`Link\` http header](https://tools.ietf.org/html/rfc5988#section-5) in the response to the request for our website \`foo.bar.cat\`. We can achieve the same as above by adding the following response header.
+
+\`\`\`html
+link: </style.css>; as=style; rel=preload, </app.js>; as=script; rel=preload
+\`\`\`
+
+This does have a side benefit though. In servers that support [HTTP2 Server Push](https://en.wikipedia.org/wiki/HTTP/2_Server_Push), adding this header can result in said server pushing the resources proactively to the browser even without the browser requesting it. This can lead to faster page load as the resource might already be available when the browser actually requests it. [Many](https://docs.fastly.com/guides/performance-tuning/http2-server-push) [CDNs](https://www.cloudflare.com/website-optimization/http2/serverpush/) already support this.
+
+Please do note that HTTP2 server push might not be a ["silver bullet from a golden gun."](https://jakearchibald.com/2017/h2-push-tougher-than-i-thought/)
+
+I use it for this page you are currently viewing and if you do notice any problems, please do [write me on twitter](http://twitter.com/muditameta).
+
+### Prefetching assets/artifacts required for possible next transitions
+
+### Deferred JS execution
+
 `,
         previous: {
           id: '1234',
