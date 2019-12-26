@@ -4,12 +4,12 @@ import React from 'react'
 const Header = () => {
   return (
     <nav>
-      <a href="https://mudit.xyz" rel="noopener noreferrer">
+      <a href="https://mudit.xyz" rel="noopener noreferrer" title="Mudit’s home page">
         mudit.xyz
       </a>
 
       <Link href="/">
-        <a>Contents</a>
+        <a title="Mudit’s blog post listing">Contents</a>
       </Link>
 
       <style jsx>
@@ -22,10 +22,6 @@ const Header = () => {
 
           nav > a:not(:last-child) {
             margin-right: 1rem;
-          }
-
-          a {
-            text-decoration: none;
           }
         `}
       </style>

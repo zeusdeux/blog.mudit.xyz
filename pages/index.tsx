@@ -17,7 +17,7 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
           {posts.map(post => (
             <li key={post.id}>
               <Link href="/posts/[slug]" as={`/posts/${post.slug}`}>
-                <a>{post.title}</a>
+                <a title={post.title}>{post.title}</a>
               </Link>
             </li>
           ))}
@@ -27,6 +27,15 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
         {`
           div {
             padding: 2rem calc(100% / 6);
+          }
+
+          li > a {
+            display: inline-block;
+            width: calc(100vw / 2);
+            max-width: 25rem;
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
           }
         `}
       </style>
@@ -50,7 +59,7 @@ Index.getInitialProps = async function(): Promise<{ posts: PostMetadata[] }> {
       {
         id: '3456',
         slug: 'third-post',
-        title: 'My third post'
+        title: 'My third post omg this is a big ass name what do i do now omgomgomgomgomgomgomg'
       }
     ]
   }

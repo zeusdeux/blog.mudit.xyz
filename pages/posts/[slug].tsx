@@ -5,23 +5,60 @@ import Markdown from 'react-markdown'
 import { Post } from '../../types'
 import Layout from '../../components/Layout'
 
+const Nav: React.FC<{ post: Post }> = ({ post }) => {
+  return (
+    <>
+      <nav>
+        {post.previous ? (
+          <Link href="/posts/[slug]" as={`/posts/${post.previous.slug}`}>
+            <a title={post.previous.title}>{post.previous.title}</a>
+          </Link>
+        ) : (
+          <Link href="/">
+            <a title="Mudit’s blog post listing">Contents</a>
+          </Link>
+        )}
+
+        {post.next ? (
+          <Link href="/posts/[slug]" as={`/posts/${post.next.slug}`}>
+            <a title={post.next.title}>{post.next.title}</a>
+          </Link>
+        ) : (
+          <Link href="/">
+            <a title="Mudit’s blog post listing">Contents</a>
+          </Link>
+        )}
+      </nav>
+
+      <style jsx>
+        {`
+          nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            text-align: center;
+            width: inherit;
+            padding: 2rem;
+          }
+
+          nav > a {
+            flex-basis: calc(100% / 3);
+            min-width: 9rem;
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+          }
+        `}
+      </style>
+    </>
+  )
+}
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   return (
     <Layout>
       <div>
         <Markdown source={post.markdown} className="blog-post" />
-        <nav>
-          {post.previous ? (
-            <Link href="/posts/[slug]" as={`/posts/${post.previous.slug}`}>
-              <a>{post.previous.title}</a>
-            </Link>
-          ) : null}
-          {post.next ? (
-            <Link href="/posts/[slug]" as={`/posts/${post.next.slug}`}>
-              <a>{post.next.title}</a>
-            </Link>
-          ) : null}
-        </nav>
+        <Nav post={post} />
       </div>
       <style jsx>
         {`
@@ -37,8 +74,16 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
           div > :global(.blog-post) {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            // align-items: center;
+            align-items: flex-start;
+            margin-bottom: 2rem;
           }
+
+          // div
+          //   > :global(.blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4, .blog-post
+          //     h5, .blog-post h6) {
+          //   align-self: center;
+          // }
 
           div > :global(.blog-post h1) {
             margin-bottom: 2rem;
@@ -48,14 +93,6 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
             text-align: center;
             font-family: serif;
             font-size: 3rem;
-          }
-
-          nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            width: inherit;
-            padding: 2rem;
           }
         `}
       </style>
@@ -121,7 +158,7 @@ omg man
         next: {
           id: '3456',
           slug: 'third-post',
-          title: 'My third post'
+          title: 'My third post omg this is a big ass name what do i do now omgomgomgomgomgomgomg'
         }
       }
     }
@@ -130,7 +167,7 @@ omg man
       post: {
         id: '3456',
         slug: 'third-post',
-        title: 'My third post',
+        title: 'My third post omg this is a big ass name what do i do now omgomgomgomgomgomgomg',
         markdown: `# Third and final post
 
 Some example text for third post
@@ -147,8 +184,8 @@ import React from 'react'
 export default function() {
   return <h1>Hello!</h1>
 }
-\`\`\`
 
+\`\`\`
 > Some note
 `,
         previous: {

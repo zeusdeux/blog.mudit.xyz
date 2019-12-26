@@ -3,21 +3,21 @@ import Header from './Header'
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="page">
-      <div className="root">
+    <div className="root">
+      <div className="page">
         <Header />
         {children}
       </div>
       <style jsx>
         {`
-          .page {
+          .root {
             width: 100vw;
             display: flex;
             flex-direction: column;
             align-items: center;
           }
 
-          .root {
+          .page {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -27,6 +27,7 @@ const Layout: React.FC = ({ children }) => {
             box-shadow: inset 9px 0px 11px 0px #e2e2e2;
             border-top-left-radius: 0.5rem;
             border-bottom-left-radius: 0.5rem;
+            border-left: 1px solid gainsboro;
           }
 
           :global(*) {
@@ -41,6 +42,14 @@ const Layout: React.FC = ({ children }) => {
           :global(body, html) {
             padding: 0;
             margin: 0;
+          }
+
+          :global(a, a:visited) {
+            color: inherit;
+          }
+
+          :global(a:hover, a:focus) {
+            color: #444;
           }
         `}
       </style>
