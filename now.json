@@ -4,6 +4,9 @@
   "scope": "zdx",
   "alias": ["blog.mudit.xyz", "www.blog.mudit.xyz"],
   "public": false,
+  "build": {
+    "env": "@blog-cda-token"
+  },
   "github": {
     "enabled": true
   }
