@@ -38,7 +38,8 @@ export const resolvers = {
       { ctfl }: { ctfl: ContentfulClientApi }
     ): Promise<PostMetadata[]> {
       const posts = await ctfl.getEntries<Omit<PostMetadata, 'id'>>({
-        content_type: 'blogPost'
+        content_type: 'blogPost',
+        order: '-sys.createdAt'
       })
 
       const result: PostMetadata[] = posts.items.map(post => ({
