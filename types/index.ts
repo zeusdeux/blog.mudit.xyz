@@ -5,7 +5,7 @@ export interface PostMetadata {
 }
 
 export interface Post extends PostMetadata {
-  markdown: string
+  body: string
   previous?: PostMetadata
   next?: PostMetadata
 }

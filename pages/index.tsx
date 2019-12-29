@@ -1,9 +1,10 @@
+import { gql } from '@zeusdeux/serverless-graphql'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
 import { PostMetadata } from '../types'
-import gql from '../utils/dataFetcher'
+import fetchViaGql from '../utils/dataFetcher'
 
 const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (
@@ -45,26 +46,17 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
 }
 
 Index.getInitialProps = async function(): Promise<{ posts: PostMetadata[] }> {
-  console.log(await gql('{ hello }')) // tslint:disable-line
-  return {
-    posts: [
+  return fetchViaGql({
+    req: gql`
       {
-        id: '1234',
-        slug: 'first-post',
-        title: 'My first post'
-      },
-      {
-        id: '2345',
-        slug: 'second-post',
-        title: 'Easy perceived performance wins for websites'
-      },
-      {
-        id: '3456',
-        slug: 'third-post',
-        title: 'My third post omg this is a big ass name what do i do now omgomgomgomgomgomgomg'
+        posts {
+          id
+          slug
+          title
+        }
       }
-    ]
-  }
+    `
+  })
 }
 
 export default Index
