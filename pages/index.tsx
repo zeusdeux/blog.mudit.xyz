@@ -1,5 +1,6 @@
 import { gql } from '@zeusdeux/serverless-graphql'
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
@@ -9,6 +10,9 @@ import { PostMetadata } from '../graphql/types'
 const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (
     <Layout>
+      <Head>
+        <title>Mudit’s Blog - Contents</title>
+      </Head>
       <div>
         <h1>Mudit’s thought dump</h1>
         <p>Hello internet stranger!</p>

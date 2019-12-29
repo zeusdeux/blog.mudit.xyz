@@ -1,5 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import Markdown from 'react-markdown'
 import { Post } from '../../graphql/types'
@@ -62,6 +63,9 @@ ${post.body}`
 
   return (
     <Layout>
+      <Head>
+        <title>Mudit’s Blog - {post.title}</title>
+      </Head>
       <div>
         <Markdown source={body} className="blog-post" linkTarget="_blank" />
         <Nav post={post} />

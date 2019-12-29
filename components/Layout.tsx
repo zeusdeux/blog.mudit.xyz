@@ -1,9 +1,13 @@
+import Head from 'next/head'
 import React from 'react'
 import Header from './Header'
 
 const Layout: React.FC = ({ children }) => {
   return (
     <div className="root">
+      <Head>
+        <link href="/favicon.ico" rel="icon" type="image/ico" />
+      </Head>
       <div className="page">
         <Header />
         {children}
