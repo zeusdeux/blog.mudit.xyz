@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "allowJs": true
   },
-  "include": ["pages/**/*", "components/**/*", "config/**/*", "api/**/*", "types/**/*"],
+  "include": ["pages/**/*", "components/**/*", "utils/**/*", "types/**/*"],
   "exclude": ["node_modules"]
 }
