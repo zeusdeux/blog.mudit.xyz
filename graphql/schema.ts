@@ -1,4 +1,4 @@
-import { gql } from '@zeusdeux/serverless-graphql'
+import { getQueryRunner, gql } from '@zeusdeux/serverless-graphql'
 import { ContentfulClientApi } from 'contentful'
 import { Post, PostMetadata } from './types'
 
@@ -65,3 +65,9 @@ export const resolvers = {
     }
   }
 }
+
+// mappings in the generic params taken from the typedefs for Query above
+export const runQuery = getQueryRunner<{ post: Post } | { posts: PostMetadata[] }>({
+  typeDefs,
+  resolvers
+})

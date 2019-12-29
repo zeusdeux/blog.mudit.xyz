@@ -1,8 +1,7 @@
-import { getQueryRunner, QueryRunnerOptions } from '@zeusdeux/serverless-graphql'
+import { QueryRunnerOptions } from '@zeusdeux/serverless-graphql'
 import { createClient } from 'contentful'
-import { resolvers, typeDefs } from './schema'
 
-const runQuery = getQueryRunner({ typeDefs, resolvers })
+import { runQuery } from './schema'
 
 export default async function(args: QueryRunnerOptions) {
   const argsWithContext: QueryRunnerOptions = {
