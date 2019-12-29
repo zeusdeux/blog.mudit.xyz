@@ -1,4 +1,3 @@
-const got = require('got')
 const { createClient } = require('contentful')
 
 const ctfl = createClient({
