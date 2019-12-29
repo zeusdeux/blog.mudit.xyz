@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "export": "next export",
-    "gql-server": "node -r esm utils/devServer.js"
+    "gql-server": "ts-node --skip-project utils/devServer.ts"
   },
   "keywords": [
     "blog",
@@ -36,6 +36,7 @@
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "1.19.1",
+    "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.4"

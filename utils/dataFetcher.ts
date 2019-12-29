@@ -2,7 +2,7 @@ import { getQueryRunner, gql, QueryRunnerOptions } from '@zeusdeux/serverless-gr
 import { ContentfulClientApi, createClient } from 'contentful'
 import { Post, PostMetadata } from '../types'
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Query {
     posts: [PostMetadata]!
     post(slug: String!): Post!
@@ -30,7 +30,7 @@ const typeDefs = gql`
   }
 `
 
-const resolvers = {
+export const resolvers = {
   Query: {
     async posts(_parent: any, _args: any, { ctfl }: { ctfl: ContentfulClientApi }) {
       const posts = await ctfl.getEntries<Omit<PostMetadata, 'id'>>({
