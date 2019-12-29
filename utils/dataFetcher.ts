@@ -66,7 +66,6 @@ export const resolvers = {
   }
 }
 
-const CDA_TOKEN = 'W-Mj-z-cobNrpPC8oWGu9Dw5DdiiqvUdcygG0gxqyNk'
 const runQuery = getQueryRunner({ typeDefs, resolvers })
 
 export default async function(args: QueryRunnerOptions) {
@@ -75,7 +74,7 @@ export default async function(args: QueryRunnerOptions) {
     context: {
       ctfl: createClient({
         space: 'pe315guv55pz',
-        accessToken: CDA_TOKEN
+        accessToken: process.env.CDA_TOKEN!
       })
     }
   }

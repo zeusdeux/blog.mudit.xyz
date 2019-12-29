@@ -30,5 +30,8 @@ module.exports = {
     console.log('*'.repeat(80))
 
     return paths
+  },
+  env: {
+    CDA_TOKEN: process.env.CDA_TOKEN
   }
 }
