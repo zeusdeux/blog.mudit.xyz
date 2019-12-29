@@ -8,6 +8,10 @@ const Header = () => {
         mudit.xyz
       </a>
 
+      <a href="https://til.mudit.xyz" rel="noopener noreferrer" title="Things Mudit learnt today">
+        TILs
+      </a>
+
       <Link href="/">
         <a title="Mudit’s blog post listing">Contents</a>
       </Link>
