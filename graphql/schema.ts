@@ -32,12 +32,16 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    async posts(_parent: any, _args: any, { ctfl }: { ctfl: ContentfulClientApi }) {
+    async posts(
+      _parent: any,
+      _args: any,
+      { ctfl }: { ctfl: ContentfulClientApi }
+    ): Promise<PostMetadata[]> {
       const posts = await ctfl.getEntries<Omit<PostMetadata, 'id'>>({
         content_type: 'blogPost'
       })
 
-      const result = posts.items.map(post => ({
+      const result: PostMetadata[] = posts.items.map(post => ({
         id: post.sys.id,
         slug: post.fields.slug,
         title: post.fields.title
@@ -45,6 +49,7 @@ export const resolvers = {
 
       return result
     },
+
     async post(
       _parent: any,
       { slug }: { slug: string },
