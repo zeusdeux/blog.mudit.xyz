@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Markdown from 'react-markdown'
-import { Post } from '../../types'
+import { Post } from '../../graphql/types'
 import Layout from '../../components/Layout'
 import fetchViaGql from '../../graphql/dataFetcher'
 import { gql } from '@zeusdeux/serverless-graphql'
@@ -95,7 +95,7 @@ ${post.body}`
   )
 }
 
-PostPage.getInitialProps = async function(context): Promise<{ post: Post }> {
+PostPage.getInitialProps = async function(context) {
   const slug = (context.query.slug as unknown) as string
 
   return fetchViaGql({

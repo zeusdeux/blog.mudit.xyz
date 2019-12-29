@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
 import fetchViaGql from '../graphql/dataFetcher'
-import { PostMetadata } from '../types'
+import { PostMetadata } from '../graphql/types'
 
 const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (
@@ -45,7 +45,7 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   )
 }
 
-Index.getInitialProps = async function(): Promise<{ posts: PostMetadata[] }> {
+Index.getInitialProps = async function() {
   return fetchViaGql({
     req: gql`
       {

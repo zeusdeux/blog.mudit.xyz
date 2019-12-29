@@ -7,7 +7,9 @@
     "dev": "next",
     "build": "next build",
     "export": "next export",
-    "gql-server": "ts-node --skip-project graphql/devServer.ts"
+    "gql-server": "ts-node --skip-project graphql/devServer.ts",
+    "generate-typescript-types": "graphql-codegen --config codegen.yml",
+    "generate-typescript-types:watch": "npm run  generate-typescript-types -- --watch"
   },
   "keywords": [
     "blog",
@@ -26,6 +28,7 @@
     "react-markdown": "^4.2.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.9.1",
     "@types/node": "^13.1.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
@@ -36,7 +39,8 @@
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "@graphql-codegen/typescript": "1.0.0"
   },
   "husky": {
     "hooks": {
