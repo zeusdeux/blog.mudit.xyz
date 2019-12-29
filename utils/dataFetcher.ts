@@ -74,7 +74,7 @@ export default async function(args: QueryRunnerOptions) {
     context: {
       ctfl: createClient({
         space: 'pe315guv55pz',
-        accessToken: process.env.CDA_TOKEN!
+        accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
       })
     }
   }
