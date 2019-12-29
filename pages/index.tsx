@@ -56,7 +56,7 @@ Index.getInitialProps = async function() {
         }
       }
     `
-  })
+  }) as Promise<{ posts: PostMetadata[] }>
 }
 
 export default Index

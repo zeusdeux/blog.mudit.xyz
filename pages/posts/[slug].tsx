@@ -118,7 +118,7 @@ PostPage.getInitialProps = async function(context) {
     variables: {
       slug
     }
-  })
+  }) as Promise<{ post: Post }>
 }
 
 export default PostPage
