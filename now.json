@@ -4,9 +4,6 @@
   "scope": "zdx",
   "alias": ["blog.mudit.xyz", "www.blog.mudit.xyz"],
   "public": false,
-  "env": {
-    "CTFL_CDA_TOKEN": "@blog-mudit-xyz-ctfl-cda-token"
-  },
   "github": {
     "enabled": true
   }

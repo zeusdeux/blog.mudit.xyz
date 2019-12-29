@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
 import { PostMetadata } from '../types'
+import gql from '../utils/dataFetcher'
 
 const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (
@@ -44,6 +45,7 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
 }
 
 Index.getInitialProps = async function(): Promise<{ posts: PostMetadata[] }> {
+  console.log(await gql('{ hello }')) // tslint:disable-line
   return {
     posts: [
       {
