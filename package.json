@@ -4,12 +4,15 @@
   "description": "Mudit's blog",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc -p .",
+    "typecheck:watch": "tsc -p . --watch",
     "dev": "next",
-    "build": "next build",
-    "export": "next export",
+    "build": "npm run typecheck && next build",
+    "export": "npm run typecheck && next export",
     "gql-server": "ts-node --skip-project graphql/devServer.ts",
     "generate-typescript-types": "graphql-codegen --config codegen.yml",
-    "generate-typescript-types:watch": "npm run  generate-typescript-types -- --watch"
+    "generate-typescript-types:watch": "npm run generate-typescript-types -- --watch",
+    "dev-all": "run-p typecheck:watch dev gql-server generate-typescript-types:watch"
   },
   "keywords": [
     "blog",
@@ -29,18 +32,19 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/typescript": "1.0.0",
     "@types/node": "^13.1.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "apollo-server": "^2.9.15",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "1.19.1",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.4",
-    "@graphql-codegen/typescript": "1.0.0"
+    "typescript": "^3.7.4"
   },
   "husky": {
     "hooks": {
