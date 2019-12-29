@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "allowJs": true
   },
-  "include": ["pages/**/*", "components/**/*", "utils/**/*", "types/**/*"],
+  "include": ["pages/**/*", "components/**/*", "graphql/**/*", "types/**/*"],
   "exclude": ["node_modules"]
 }

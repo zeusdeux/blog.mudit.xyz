@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Markdown from 'react-markdown'
 import { Post } from '../../types'
 import Layout from '../../components/Layout'
-import fetchViaGql from '../../utils/dataFetcher'
+import fetchViaGql from '../../graphql/dataFetcher'
 import { gql } from '@zeusdeux/serverless-graphql'
 
 const Nav: React.FC<{ post: Post }> = ({ post }) => {

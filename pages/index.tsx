@@ -3,8 +3,8 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
+import fetchViaGql from '../graphql/dataFetcher'
 import { PostMetadata } from '../types'
-import fetchViaGql from '../utils/dataFetcher'
 
 const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   return (

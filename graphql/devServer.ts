@@ -8,7 +8,7 @@ const server = new ApolloServer({
   context: {
     ctfl: createClient({
       space: 'pe315guv55pz',
-      accessToken: 'W-Mj-z-cobNrpPC8oWGu9Dw5DdiiqvUdcygG0gxqyNk'
+      accessToken: process.env.CDA_TOKEN
     })
   }
 })

@@ -19,6 +19,6 @@
 !api/**
 !types
 !types/**
-!utils
-!utils/**
+!graphql
+!graphql/**
 **/.tern*
