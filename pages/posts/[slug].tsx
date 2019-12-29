@@ -65,6 +65,8 @@ ${post.body}`
     <Layout>
       <Head>
         <title>Mudit’s Blog - {post.title}</title>
+        <meta name="description" content={post.title} />
+        <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
         <Markdown source={body} className="blog-post" linkTarget="_blank" />
@@ -110,6 +112,7 @@ PostPage.getInitialProps = async function(context) {
           slug
           title
           body
+          tags
           previous {
             id
             slug

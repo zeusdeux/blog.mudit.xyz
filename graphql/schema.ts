@@ -25,6 +25,7 @@ export const typeDefs = gql`
     slug: String!
     title: String!
     body: String!
+    tags: [String!]!
     previous: PostMetadata
     next: PostMetadata
   }
@@ -72,6 +73,7 @@ export const resolvers = {
           slug: post.fields.slug,
           title: post.fields.title,
           body: post.fields.body,
+          tags: post.fields.tags,
           previous: post.fields.previous && {
             id: post.fields.previous.sys.id,
             slug: post.fields.previous.fields.slug,

@@ -18,6 +18,7 @@ export type Post = Metadata & {
   slug: Scalars['String']
   title: Scalars['String']
   body: Scalars['String']
+  tags: Array<Scalars['String']>
   previous?: Maybe<PostMetadata>
   next?: Maybe<PostMetadata>
 }
