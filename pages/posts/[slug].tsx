@@ -1,12 +1,12 @@
-import React from 'react'
+import { gql } from '@zeusdeux/serverless-graphql'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import React from 'react'
 import Markdown from 'react-markdown'
-import { Post } from '../../graphql/types'
 import Layout from '../../components/Layout'
 import fetchViaGql from '../../graphql/dataFetcher'
-import { gql } from '@zeusdeux/serverless-graphql'
+import { Post } from '../../graphql/types'
 
 const Nav: React.FC<{ post: Post }> = ({ post }) => {
   return (
