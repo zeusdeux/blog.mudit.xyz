@@ -5,7 +5,9 @@
   "alias": ["blog.mudit.xyz", "www.blog.mudit.xyz"],
   "public": false,
   "build": {
-    "env": "@blog-cda-token"
+    "env": {
+      "CDA_TOKEN": "@blog-cda-token"
+    }
   },
   "github": {
     "enabled": true
