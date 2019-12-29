@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server'
 import { gql, makeExecutableSchema } from '@zeusdeux/serverless-graphql'
 import { createClient } from 'contentful'
 
+// TODO: Figure out how to keep typedefs and resolvers in sync with utils/dataFetcher.ts
 const typeDefs = gql`
   type Query {
     hello: String!
