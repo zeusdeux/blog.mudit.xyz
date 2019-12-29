@@ -112,9 +112,13 @@ PostPage.getInitialProps = async function(context) {
           body
           previous {
             id
+            slug
+            title
           }
           next {
             id
+            slug
+            title
           }
         }
       }
