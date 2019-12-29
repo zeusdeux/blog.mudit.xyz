@@ -14,10 +14,11 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
         <title>Mudit’s Blog - Contents</title>
       </Head>
       <div>
-        <h1>Mudit’s thought dump</h1>
-        <p>Hello internet stranger!</p>
+        <h1>My thoughts and ramblings..</h1>
+        <p>Hello internet stranger! 👋🏼</p>
         <p>
-          Below are list of things I have had rattling around in my head, dumped on your screen.
+          Below are a list of things I have had rattling around in my head, dumped on your screen.
+          They are arranged from newest to oldest.
         </p>
         <ul>
           {posts.map(post => (
