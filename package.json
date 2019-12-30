@@ -24,7 +24,7 @@
   "author": "Mudit Ameta <zeusdeux@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@zeusdeux/serverless-graphql": "0.0.12",
+    "@zeusdeux/serverless-graphql": "0.0.13",
     "contentful": "^7.11.3",
     "graphql": "^14.5.8",
     "next": "^9.1.6",
