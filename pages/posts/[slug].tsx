@@ -57,15 +57,15 @@ const Nav: React.FC<{ post: Post }> = ({ post }) => {
   )
 }
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
-  const body = `# ${post.title}
+  const body = `# ${post.metadata.title}
 
 ${post.body}`
 
   return (
     <Layout>
       <Head>
-        <title>Mudit’s Blog - {post.title}</title>
-        <meta name="description" content={post.title} />
+        <title>Mudit’s Blog - {post.metadata.title}</title>
+        <meta name="description" content={post.metadata.title} />
         <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
@@ -108,9 +108,11 @@ PostPage.getInitialProps = async function(context) {
     req: gql`
       query getPosts($slug: String!) {
         post(slug: $slug) {
-          id
-          slug
-          title
+          metadata {
+            id
+            slug
+            title
+          }
           body
           tags
           previous {

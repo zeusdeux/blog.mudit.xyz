@@ -8,22 +8,14 @@ export const typeDefs = gql`
     post(slug: String!): Post!
   }
 
-  interface Metadata {
+  type PostMetadata {
     id: String!
     slug: String!
     title: String!
   }
 
-  type PostMetadata implements Metadata {
-    id: String!
-    slug: String!
-    title: String!
-  }
-
-  type Post implements Metadata {
-    id: String!
-    slug: String!
-    title: String!
+  type Post {
+    metadata: PostMetadata!
     body: String!
     tags: [String!]!
     previous: PostMetadata
@@ -57,10 +49,10 @@ export const resolvers = {
       { slug }: { slug: string },
       { ctfl }: { ctfl: ContentfulClientApi }
     ): Promise<Post> {
-      type BlogPostEntryType = Omit<Post, 'id' | 'previous' | 'next'> & {
+      type BlogPostEntryType = Omit<Post, 'metadata' | 'previous' | 'next'> & {
         previous?: Entry<BlogPostEntryType>
         next?: Entry<BlogPostEntryType>
-      }
+      } & Omit<PostMetadata, 'id'>
       const posts = await ctfl.getEntries<BlogPostEntryType>({
         content_type: 'blogPost',
         'fields.slug': slug
@@ -69,9 +61,7 @@ export const resolvers = {
       // TODO: build the previous and next fields out correctly
       const result: Post[] = posts.items.map(post => {
         return {
-          id: post.sys.id,
-          slug: post.fields.slug,
-          title: post.fields.title,
+          metadata: { id: post.sys.id, slug: post.fields.slug, title: post.fields.title },
           body: post.fields.body,
           tags: post.fields.tags,
           previous: post.fields.previous && {
