@@ -82,7 +82,7 @@ export const resolvers = {
 }
 
 // mappings in the generic params taken from the typedefs for Query above
-export const runQuery = getQueryRunner<{ post: Post } | { posts: PostMetadata[] }>({
+export const { graphql: runQuery } = getQueryRunner<{ post: Post } | { posts: PostMetadata[] }>({
   typeDefs,
   resolvers
 })
