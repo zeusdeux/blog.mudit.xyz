@@ -12,6 +12,8 @@
 !components/**
 !graphql
 !graphql/**
+!contentful
+!contentful/**
 !pages
 !pages/**
 !public

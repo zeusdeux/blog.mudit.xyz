@@ -1,5 +1,6 @@
 import { getQueryRunner, gql } from '@zeusdeux/serverless-graphql'
-import { ContentfulClientApi, Entry } from 'contentful'
+import { ContentfulClientApi } from 'contentful'
+import { BlogPostFields } from '../contentful/types'
 import { Post, PostMetadata } from './types'
 
 export const typeDefs = gql`
@@ -30,7 +31,7 @@ export const resolvers = {
       _args: any,
       { ctfl }: { ctfl: ContentfulClientApi }
     ): Promise<PostMetadata[]> {
-      const posts = await ctfl.getEntries<Omit<PostMetadata, 'id'>>({
+      const posts = await ctfl.getEntries<BlogPostFields>({
         content_type: 'blogPost',
         order: '-sys.createdAt'
       })
@@ -49,11 +50,7 @@ export const resolvers = {
       { slug }: { slug: string },
       { ctfl }: { ctfl: ContentfulClientApi }
     ): Promise<Post> {
-      type BlogPostEntryType = Omit<Post, 'metadata' | 'previous' | 'next'> & {
-        previous?: Entry<BlogPostEntryType>
-        next?: Entry<BlogPostEntryType>
-      } & Omit<PostMetadata, 'id'>
-      const posts = await ctfl.getEntries<BlogPostEntryType>({
+      const posts = await ctfl.getEntries<BlogPostFields>({
         content_type: 'blogPost',
         'fields.slug': slug
       })
