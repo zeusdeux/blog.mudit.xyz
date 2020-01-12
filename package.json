@@ -12,9 +12,10 @@
     "build": "npm run check && next build",
     "export": "npm run check && next export",
     "gql-server": "ts-node --skip-project graphql/devServer.ts",
-    "generate-typescript-types": "graphql-codegen --config codegen.yml",
-    "generate-typescript-types:watch": "npm run generate-typescript-types -- --watch",
-    "dev-all": "run-p typecheck:watch dev gql-server generate-typescript-types:watch"
+    "generate-types-from-gql-schema": "graphql-codegen --config codegen.yml",
+    "generate-types-from-gql-schema:watch": "npm run generate-types-from-gql-schema -- --watch",
+    "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.ts",
+    "dev-all": "run-p typecheck:watch dev gql-server generate-types-from-gql-schema:watch generate-types-from-ctfl"
   },
   "keywords": [
     "blog",
@@ -40,7 +41,7 @@
     "@types/react-dom": "^16.9.4",
     "apollo-server": "^2.9.15",
     "contentful-management": "^5.12.0",
-    "contentful-typescript-codegen": "^3.0.0",
+    "contentful-typescript-codegen": "git+ssh://git@github.com:zeusdeux/contentful-typescript-codegen.git#bcb55953c4c0d77e2e8c9dfe3a3054d6e2e88fe7",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "npm-run-all": "^4.1.5",
