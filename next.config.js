@@ -21,6 +21,7 @@ module.exports = {
     }, {})
     const paths = {
       '/': { page: '/' },
+      '/posts': { page: '/' },
       ...pathsToPosts
     }
 
