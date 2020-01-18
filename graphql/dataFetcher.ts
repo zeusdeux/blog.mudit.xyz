@@ -8,10 +8,19 @@ import {
   GetPostsQueryVariables
 } from './types.generated'
 
-const ctfl = createClient({
-  space: process.env.SPACE_ID!,
-  accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
-})
+const ctflConfig =
+  process.env.NODE_ENV === 'production'
+    ? {
+        space: process.env.SPACE_ID!,
+        accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
+      }
+    : {
+        space: process.env.SPACE_ID!,
+        accessToken: process.env.PREVIEW_TOKEN!, // // comes from next.config.js and there from the env itselfP
+        host: 'preview.contentful.com'
+      }
+
+const ctfl = createClient(ctflConfig)
 
 async function fetchViaGql<T>(args: QueryRunnerOptions) {
   const argsWithContext: QueryRunnerOptions = {
