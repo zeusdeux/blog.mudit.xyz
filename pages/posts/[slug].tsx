@@ -6,7 +6,7 @@ import React from 'react'
 import Markdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import fetchViaGql from '../../graphql/dataFetcher'
-import { Post } from '../../graphql/types'
+import { Post, PostMetadata } from '../../graphql/types'
 
 const Nav: React.FC<{ post: Post }> = ({ post }) => {
   return (
@@ -101,10 +101,10 @@ ${post.body}`
   )
 }
 
-PostPage.getInitialProps = async function(context) {
-  const slug = (context.query.slug as unknown) as string
+export async function unstable_getStaticProps(context: any) {
+  const slug = (context.params.slug as unknown) as string
 
-  return fetchViaGql({
+  const post = (await fetchViaGql({
     req: gql`
       query getPosts($slug: String!) {
         post(slug: $slug) {
@@ -131,7 +131,29 @@ PostPage.getInitialProps = async function(context) {
     variables: {
       slug
     }
-  }) as Promise<{ post: Post }>
+  })) as { post: Post }
+
+  return {
+    props: post
+  }
+}
+
+export async function unstable_getStaticPaths() {
+  const { posts } = (await fetchViaGql({
+    req: gql`
+      {
+        posts {
+          id
+          slug
+          title
+        }
+      }
+    `
+  })) as { posts: PostMetadata[] }
+
+  return posts.map(({ slug }) => ({
+    params: { slug }
+  }))
 }
 
 export default PostPage

@@ -50,8 +50,8 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
   )
 }
 
-Index.getInitialProps = async function() {
-  return fetchViaGql({
+export async function unstable_getStaticProps() {
+  const posts = (await fetchViaGql({
     req: gql`
       {
         posts {
@@ -61,7 +61,11 @@ Index.getInitialProps = async function() {
         }
       }
     `
-  }) as Promise<{ posts: PostMetadata[] }>
+  })) as { posts: PostMetadata[] }
+
+  return {
+    props: posts
+  }
 }
 
 export default Index

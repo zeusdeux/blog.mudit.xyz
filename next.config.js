@@ -7,30 +7,6 @@ const ctfl = createClient({
 
 module.exports = {
   exportTrailingSlash: false,
-  exportPathMap: async function() {
-    const posts = await ctfl.getEntries({
-      content_type: 'blogPost'
-    })
-
-    const pathsToPosts = posts.items.reduce((acc, post) => {
-      acc[`/posts/${post.fields.slug}`] = {
-        page: '/posts/[slug]',
-        query: { slug: post.fields.slug }
-      }
-      return acc
-    }, {})
-    const paths = {
-      '/': { page: '/' },
-      '/posts': { page: '/' },
-      ...pathsToPosts
-    }
-
-    console.log('*'.repeat(80))
-    console.log(paths)
-    console.log('*'.repeat(80))
-
-    return paths
-  },
   env: {
     CDA_TOKEN: process.env.CDA_TOKEN
   }
