@@ -94,6 +94,10 @@ ${post.body}`
             font-style: italic;
             font-family: serif;
           }
+
+          div > :global(.blog-post img) {
+            width: 100%;
+          }
         `}
       </style>
     </Layout>
