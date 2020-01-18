@@ -15,7 +15,7 @@
     "generate-types-from-gql-schema": "graphql-codegen --config codegen.yml",
     "generate-types-from-gql-schema:watch": "npm run generate-types-from-gql-schema -- --watch",
     "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.generated.ts",
-    "dev-all": "run-p typecheck:watch dev gql-server generate-types-from-gql-schema:watch generate-types-from-ctfl"
+    "dev-all": "run-p typecheck:watch dev generate-types-from-gql-schema:watch generate-types-from-ctfl"
   },
   "keywords": [
     "blog",
