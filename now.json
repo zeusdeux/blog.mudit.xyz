@@ -6,7 +6,8 @@
   "public": false,
   "build": {
     "env": {
-      "CDA_TOKEN": "@blog-cda-token"
+      "CDA_TOKEN": "@blog-cda-token",
+      "SPACE_ID": "pe315guv55pz"
     }
   },
   "github": {

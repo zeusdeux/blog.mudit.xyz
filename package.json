@@ -14,7 +14,7 @@
     "gql-server": "ts-node --skip-project graphql/devServer.ts",
     "generate-types-from-gql-schema": "graphql-codegen --config codegen.yml",
     "generate-types-from-gql-schema:watch": "npm run generate-types-from-gql-schema -- --watch",
-    "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.ts",
+    "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.generated.ts",
     "dev-all": "run-p typecheck:watch dev gql-server generate-types-from-gql-schema:watch generate-types-from-ctfl"
   },
   "keywords": [
@@ -25,7 +25,7 @@
   "author": "Mudit Ameta <zeusdeux@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@zeusdeux/serverless-graphql": "0.0.14",
+    "@zeusdeux/serverless-graphql": "0.0.16",
     "contentful": "^7.11.3",
     "graphql": "^14.5.8",
     "next": "^9.2.0",
@@ -34,8 +34,9 @@
     "react-markdown": "^4.2.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.9.1",
-    "@graphql-codegen/typescript": "1.0.0",
+    "@graphql-codegen/cli": "^1.11.2",
+    "@graphql-codegen/typescript": "^1.11.2",
+    "@graphql-codegen/typescript-operations": "^1.11.2",
     "@types/node": "^13.1.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",

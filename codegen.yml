@@ -1,8 +1,12 @@
 overwrite: true
-require:
-  - ts-node/register
+config:
+  skipTypename: false
+  declarationKind: 'interface'
+  preResolveTypes: true
 generates:
-  ./graphql/types.ts:
-    schema: "./graphql/schema.ts"
+  ./graphql/types.generated.ts:
+    schema: graphql/schema.ts
+    documents: graphql/dataFetcher.ts
     plugins:
       - typescript
+      - typescript-operations

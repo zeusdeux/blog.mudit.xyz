@@ -1,13 +1,12 @@
-import { gql } from '@zeusdeux/serverless-graphql'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import Layout from '../components/Layout'
-import fetchViaGql from '../graphql/dataFetcher'
-import { PostMetadata } from '../graphql/types'
+import { getPosts } from '../graphql/dataFetcher'
+import { GetPostsQuery } from '../graphql/types.generated'
 
-const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
+const Index: NextPage<GetPostsQuery> = ({ posts }) => {
   return (
     <Layout>
       <Head>
@@ -51,17 +50,7 @@ const Index: NextPage<{ posts: PostMetadata[] }> = ({ posts }) => {
 }
 
 export async function unstable_getStaticProps() {
-  const posts = (await fetchViaGql({
-    req: gql`
-      {
-        posts {
-          id
-          slug
-          title
-        }
-      }
-    `
-  })) as { posts: PostMetadata[] }
+  const posts = await getPosts()
 
   return {
     props: posts

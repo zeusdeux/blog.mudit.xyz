@@ -1,19 +1,26 @@
-import { QueryRunnerOptions } from '@zeusdeux/serverless-graphql'
+import { gql, QueryRunnerOptions } from '@zeusdeux/serverless-graphql'
 import { createClient } from 'contentful'
-
 import { runQuery } from './schema'
+import {
+  GetPostQuery,
+  GetPostQueryVariables,
+  GetPostsQuery,
+  GetPostsQueryVariables
+} from './types.generated'
 
-export default async function(args: QueryRunnerOptions) {
+const ctfl = createClient({
+  space: process.env.SPACE_ID!,
+  accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
+})
+
+async function fetchViaGql<T>(args: QueryRunnerOptions) {
   const argsWithContext: QueryRunnerOptions = {
     ...args,
     context: {
-      ctfl: createClient({
-        space: 'pe315guv55pz',
-        accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
-      })
+      ctfl
     }
   }
-  const { data, errors } = await runQuery(argsWithContext)
+  const { data, errors } = await runQuery<T>(argsWithContext)
 
   if (errors) {
     console.log(errors) // tslint:disable-line
@@ -21,4 +28,60 @@ export default async function(args: QueryRunnerOptions) {
   }
 
   return data
+}
+
+export async function getPosts(variables: GetPostsQueryVariables = {}): Promise<GetPostsQuery> {
+  const result = await fetchViaGql<GetPostsQuery>({
+    req: gql`
+      query getPosts {
+        posts {
+          id
+          slug
+          title
+        }
+      }
+    `,
+    variables
+  })
+
+  if (!result) {
+    throw new Error(`Unexpected result ${result} for getPosts query`)
+  }
+
+  return result
+}
+
+export async function getPost(variables: GetPostQueryVariables): Promise<GetPostQuery> {
+  const result = await fetchViaGql<GetPostQuery>({
+    req: gql`
+      query getPost($slug: String!) {
+        post(slug: $slug) {
+          metadata {
+            id
+            slug
+            title
+          }
+          body
+          tags
+          previous {
+            id
+            slug
+            title
+          }
+          next {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `,
+    variables
+  })
+
+  if (!result) {
+    throw new Error(`Unexpected result ${result} for getPost query`)
+  }
+
+  return result
 }

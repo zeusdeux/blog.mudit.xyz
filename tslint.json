@@ -8,5 +8,8 @@
     "only-arrow-functions": false,
     "variable-name": false,
     "interface-over-type-literal": false
+  },
+  "linterOptions": {
+    "exclude": ["./graphql/*.generated.ts", "./contentful/*.generated.ts"]
   }
 }

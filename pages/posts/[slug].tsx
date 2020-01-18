@@ -1,14 +1,13 @@
-import { gql } from '@zeusdeux/serverless-graphql'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import Markdown from 'react-markdown'
 import Layout from '../../components/Layout'
-import fetchViaGql from '../../graphql/dataFetcher'
-import { Post, PostMetadata } from '../../graphql/types'
+import { getPost, getPosts } from '../../graphql/dataFetcher'
+import { GetPostQuery } from '../../graphql/types.generated'
 
-const Nav: React.FC<{ post: Post }> = ({ post }) => {
+const Nav: React.FC<GetPostQuery> = ({ post }) => {
   return (
     <>
       <nav>
@@ -56,7 +55,7 @@ const Nav: React.FC<{ post: Post }> = ({ post }) => {
     </>
   )
 }
-const PostPage: NextPage<{ post: Post }> = ({ post }) => {
+const PostPage: NextPage<GetPostQuery> = ({ post }) => {
   const body = `# ${post.metadata.title}
 
 ${post.body}`
@@ -106,34 +105,7 @@ ${post.body}`
 export async function unstable_getStaticProps(context: any) {
   const slug = (context.params.slug as unknown) as string
 
-  const post = (await fetchViaGql({
-    req: gql`
-      query getPosts($slug: String!) {
-        post(slug: $slug) {
-          metadata {
-            id
-            slug
-            title
-          }
-          body
-          tags
-          previous {
-            id
-            slug
-            title
-          }
-          next {
-            id
-            slug
-            title
-          }
-        }
-      }
-    `,
-    variables: {
-      slug
-    }
-  })) as { post: Post }
+  const post = await getPost({ slug })
 
   return {
     props: post
@@ -141,17 +113,7 @@ export async function unstable_getStaticProps(context: any) {
 }
 
 export async function unstable_getStaticPaths() {
-  const { posts } = (await fetchViaGql({
-    req: gql`
-      {
-        posts {
-          id
-          slug
-          title
-        }
-      }
-    `
-  })) as { posts: PostMetadata[] }
+  const { posts } = await getPosts()
 
   return posts.map(({ slug }) => ({
     params: { slug }

@@ -1,11 +1,11 @@
 import { getQueryRunner, gql } from '@zeusdeux/serverless-graphql'
 import { ContentfulClientApi } from 'contentful'
-import { BlogPostFields } from '../contentful/types'
-import { Post, PostMetadata } from './types'
+import { BlogPostFields } from '../contentful/types.generated'
+import { Post, PostMetadata, Query } from './types.generated'
 
 export const typeDefs = gql`
   type Query {
-    posts: [PostMetadata]!
+    posts: [PostMetadata!]!
     post(slug: String!): Post!
   }
 
@@ -58,7 +58,11 @@ export const resolvers = {
       // TODO: build the previous and next fields out correctly
       const result: Post[] = posts.items.map(post => {
         return {
-          metadata: { id: post.sys.id, slug: post.fields.slug, title: post.fields.title },
+          metadata: {
+            id: post.sys.id,
+            slug: post.fields.slug,
+            title: post.fields.title
+          },
           body: post.fields.body,
           tags: post.fields.tags,
           previous: post.fields.previous && {
@@ -79,7 +83,7 @@ export const resolvers = {
 }
 
 // mappings in the generic params taken from the typedefs for Query above
-export const { graphql: runQuery } = getQueryRunner<{ post: Post } | { posts: PostMetadata[] }>({
+export const { graphql: runQuery } = getQueryRunner<Query>({
   typeDefs,
   resolvers
 })
