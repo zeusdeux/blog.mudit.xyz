@@ -32,6 +32,11 @@ export interface BlogPostFields {
     | 'javascript'
     | 'typescript'
     | 'bundler'
+    | 'graphql'
+    | 'ssg'
+    | 'blog'
+    | 'next.js'
+    | 'gatsby'
   >
 
   /** Next */
