@@ -101,6 +101,8 @@ ${post.body}`
   )
 }
 
+// TODO: Replace context: any with a type that comes from next
+// once getStaticProps stabilizes.
 export async function unstable_getStaticProps(context: any) {
   const slug = (context.params.slug as unknown) as string
 
