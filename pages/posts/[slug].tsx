@@ -98,6 +98,10 @@ ${post.body}`
           div > :global(.blog-post img) {
             width: 100%;
           }
+
+          div > :global(.blog-post pre) {
+            white-space: pre-wrap;
+          }
         `}
       </style>
     </Layout>
