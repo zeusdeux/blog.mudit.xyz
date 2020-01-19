@@ -69,5 +69,13 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeusdeux/blog.mudit.xyz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zeusdeux/blog.mudit.xyz/issues"
+  },
+  "homepage": "https://blog.mudit.xyz"
 }
