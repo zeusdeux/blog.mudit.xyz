@@ -7,7 +7,7 @@ const server = new ApolloServer({
   schema: makeExecutableSchema({ typeDefs, resolvers }),
   context: {
     ctfl: createClient({
-      space: 'pe315guv55pz',
+      space: process.env.SPACE_ID!,
       accessToken: process.env.CDA_TOKEN!
     })
   }
