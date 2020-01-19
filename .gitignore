@@ -3,6 +3,7 @@
 !.prettier*
 !Readme*
 !codegen.yml
+!getContentful*
 !next.config*
 !now.json
 !package*.json
@@ -10,10 +11,10 @@
 !tsconfig*
 !components
 !components/**
-!graphql
-!graphql/**
 !contentful
 !contentful/**
+!graphql
+!graphql/**
 !pages
 !pages/**
 !public

@@ -7,6 +7,7 @@
   "build": {
     "env": {
       "CDA_TOKEN": "@blog-cda-token",
+      "CMA_TOKEN": "@blog-cma-token",
       "PREVIEW_TOKEN": "@blog-preview-token",
       "SPACE_ID": "pe315guv55pz"
     }
