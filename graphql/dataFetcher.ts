@@ -8,7 +8,7 @@ import {
   GetPostsQueryVariables
 } from './types.generated'
 
-const ctflConfig =
+export const ctflConfig =
   process.env.NODE_ENV === 'production'
     ? {
         space: process.env.SPACE_ID!,
