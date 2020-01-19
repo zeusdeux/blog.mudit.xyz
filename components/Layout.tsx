@@ -23,7 +23,6 @@ const Layout: React.FC = ({ children }) => {
             min-height: 100vh;
             max-width: 960px;
             width: 100%;
-            background-color: #f7f7f7;
             line-height: 1.5rem;
           }
         `}
