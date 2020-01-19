@@ -30,6 +30,14 @@ Latin Modern (LaTeX default) font */
   font-display: swap;
   src: url(../fonts/lmroman10-italic.woff) format('woff');
 }
+@font-face {
+  font-family: 'ia_writer_duospaceregular';
+  src: url('../fonts/iawriterduospace-regular-webfont.woff2') format('woff2'),
+    url('../fonts/iawriterduospace-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 * {
   box-sizing: border-box;
 }
@@ -80,4 +88,11 @@ sup {
 blockquote {
   font-size: 1.2rem;
   line-height: 1.8rem;
+}
+code {
+  font-size: 1.2rem;
+}
+pre code {
+  font-family: 'ia_writer_duospaceregular';
+  font-size: 0.7rem;
 }
