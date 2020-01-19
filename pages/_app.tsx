@@ -1,5 +1,6 @@
 import { NextComponentType } from 'next'
 import Head from 'next/head'
+import '../public/assets/css/style.css'
 
 function MyApp({
   Component,
@@ -28,9 +29,6 @@ function MyApp({
         <meta name="twitter:url" content="https://blog.mudit.xyz" />
         <meta name="twitter:title" content="Mudit’s blog.." />
         <meta name="twitter:description" content="My thought dump." />
-
-        <link as="style" rel="preload" href="/assets/css/style.css" />
-        <link type="text/css" rel="stylesheet" href="/assets/css/style.css" />
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59474035-2"></script>
         <script
