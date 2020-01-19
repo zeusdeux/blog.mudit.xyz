@@ -41,6 +41,9 @@ Latin Modern (LaTeX default) font */
 * {
   box-sizing: border-box;
 }
+html {
+  font-size: 1.2rem;
+}
 body,
 html {
   padding: 0;
@@ -76,8 +79,8 @@ h1 {
   width: 100%;
   text-align: center;
   font-family: serif;
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: 2.7rem;
+  line-height: 3.3rem;
 }
 h2 {
   line-height: 2rem;
@@ -95,4 +98,16 @@ code {
 pre code {
   font-family: 'ia_writer_duospaceregular';
   font-size: 0.7rem;
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 2.7rem;
+  }
+  code {
+    font-size: 1.1rem;
+  }
 }

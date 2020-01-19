@@ -79,13 +79,7 @@ ${post.body}`
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem calc(100% / 6);
-          }
-
-          @media (max-width: 600px) {
-            div {
-              padding: 2rem calc(100% / 10);
-            }
+            padding: 2rem calc(100% / 10);
           }
 
           :global(.blog-post) {

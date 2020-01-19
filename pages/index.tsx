@@ -32,13 +32,7 @@ const Index: NextPage<GetPostsQuery> = ({ posts }) => {
       <style jsx>
         {`
           div {
-            padding: 2rem calc(100% / 6);
-          }
-
-          @media (max-width: 600px) {
-            div {
-              padding: 2rem calc(100% / 10);
-            }
+            padding: 2rem calc(100% / 10);
           }
 
           li > a {
