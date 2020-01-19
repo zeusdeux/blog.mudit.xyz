@@ -9,12 +9,13 @@
     "lint": "tslint -p .",
     "check": "run-p typecheck lint",
     "dev": "next",
-    "build": "npm run check && next build",
-    "export": "npm run check && next export",
+    "build": "npm run generate-types && npm run check && next build",
+    "export": "npm run build && next export",
     "gql-server": "ts-node --skip-project graphql/devServer.ts",
     "generate-types-from-gql-schema": "graphql-codegen --config codegen.yml",
     "generate-types-from-gql-schema:watch": "npm run generate-types-from-gql-schema -- --watch",
     "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.generated.ts",
+    "generate-types": "run-p generate-types-from-ctfl generate-types-from-gql-schema",
     "dev-all": "run-p typecheck:watch dev generate-types-from-gql-schema:watch generate-types-from-ctfl"
   },
   "keywords": [
