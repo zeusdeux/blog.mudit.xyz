@@ -69,6 +69,7 @@ ${post.body}`
       </Head>
       <div>
         <Markdown source={body} className="blog-post" linkTarget="_blank" escapeHtml={false} />
+        <h2>🖖🏼</h2>
         <Nav post={post} />
       </div>
       <style jsx>
