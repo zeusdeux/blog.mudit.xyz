@@ -43,8 +43,8 @@ Latin Modern (LaTeX default) font */
   --bg-warm: #f7f3eb;
   --bg-warmer: #f7eddb;
   --link: #a00;
-  --link-hover: #da0000;
-  --border-color: black;
+  --link-hover: #ca2f2f;
+  --color: black;
 }
 * {
   box-sizing: border-box;
@@ -87,7 +87,7 @@ dl dd {
 h1 {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--color);
   width: 100%;
   text-align: center;
   font-size: 2.5rem;
@@ -115,5 +115,22 @@ code {
   h1 {
     font-size: 2rem;
     line-height: 2.7rem;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color);
+    color: var(--bg-warm);
+  }
+  a,
+  a:visited {
+    color: var(--link-hover);
+  }
+  a:hover,
+  a:focus {
+    color: var(--link);
+  }
+  h1 {
+    border-color: var(--bg-warm);
   }
 }
