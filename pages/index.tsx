@@ -35,6 +35,12 @@ const Index: NextPage<GetPostsQuery> = ({ posts }) => {
             padding: 2rem calc(100% / 6);
           }
 
+          @media (max-width: 600px) {
+            div {
+              padding: 2rem calc(100% / 10);
+            }
+          }
+
           li > a {
             display: inline-block;
             width: calc(100vw / 2);

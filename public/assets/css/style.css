@@ -30,10 +30,16 @@ Latin Modern (LaTeX default) font */
   font-display: swap;
   src: url(../fonts/lmroman10-italic.woff) format('woff');
 }
-body {
-  background-color: #f7f7f7;
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  padding: 0;
+  margin: 0;
 }
 body {
+  background-color: #f7f7f7;
   font-family: 'Latin Modern Roman', serif;
 }
 h1,
@@ -54,4 +60,24 @@ ul {
 }
 dl dd {
   text-align: center;
+}
+h1 {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid black;
+  width: 100%;
+  text-align: center;
+  font-family: serif;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+h2 {
+  line-height: 2rem;
+}
+sup {
+  vertical-align: top;
+}
+blockquote {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }

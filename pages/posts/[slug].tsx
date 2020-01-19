@@ -68,7 +68,7 @@ ${post.body}`
         <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
-        <Markdown source={body} className="blog-post" linkTarget="_blank" />
+        <Markdown source={body} className="blog-post" linkTarget="_blank" escapeHtml={false} />
         <Nav post={post} />
       </div>
       <style jsx>
@@ -82,7 +82,13 @@ ${post.body}`
             padding: 2rem calc(100% / 6);
           }
 
-          div > :global(.blog-post) {
+          @media (max-width: 600px) {
+            div {
+              padding: 2rem calc(100% / 10);
+            }
+          }
+
+          :global(.blog-post) {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -90,17 +96,28 @@ ${post.body}`
             width: 100%;
           }
 
-          div > :global(.blog-post blockquote) {
+          :global(.blog-post blockquote) {
             font-style: italic;
-            font-family: serif;
           }
 
-          div > :global(.blog-post img) {
+          :global(.blog-post blockquote > *:before) {
+            content: '“';
+          }
+
+          :global(.blog-post blockquote > *:after) {
+            content: '”';
+          }
+
+          :global(.blog-post img) {
             width: 100%;
           }
 
-          div > :global(.blog-post pre) {
+          :global(.blog-post pre) {
             white-space: pre-wrap;
+          }
+
+          :global(.blog-post p) {
+            width: 100%;
           }
         `}
       </style>
