@@ -1,12 +1,12 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Prism from 'prismjs'
 import React from 'react'
 import Markdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { getPost, getPosts } from '../../graphql/dataFetcher'
 import { GetPostQuery } from '../../graphql/types.generated'
-import Prism from 'prismjs'
 
 const Nav: React.FC<GetPostQuery> = ({ post }) => {
   React.useEffect(() => {
