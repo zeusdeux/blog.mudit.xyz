@@ -104,10 +104,24 @@ blockquote {
   line-height: 1.8rem;
 }
 pre,
-code {
+pre[class*='language-'],
+code,
+code[class*='language-'] {
   font-family: 'ia_writer_duospaceregular', monospace;
   font-size: 0.8rem;
 }
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--bg-warm);
+  text-align: left;
+}
+
+pre[class*='language-'],
+:not(pre) > code[class*='language-'] {
+  background: var(--color);
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 1rem;

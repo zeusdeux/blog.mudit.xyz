@@ -6,8 +6,12 @@ import Markdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { getPost, getPosts } from '../../graphql/dataFetcher'
 import { GetPostQuery } from '../../graphql/types.generated'
+import Prism from 'prismjs'
 
 const Nav: React.FC<GetPostQuery> = ({ post }) => {
+  React.useEffect(() => {
+    Prism.highlightAll()
+  }, [])
   return (
     <>
       <nav>
@@ -108,7 +112,7 @@ ${post.body}`
           }
 
           :global(.blog-post pre) {
-            white-space: pre-wrap;
+            width: 100%;
           }
 
           :global(.blog-post p) {
