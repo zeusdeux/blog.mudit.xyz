@@ -6,7 +6,7 @@
 !codegen.yml
 !getContentful*
 !next.config*
-!now.json
+!now*.json
 !package*.json
 !tslint*
 !tsconfig*

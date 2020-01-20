@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "name": "blog.mudit.xyz",
+  "name": "preview.blog.mudit.xyz",
   "scope": "zdx",
-  "alias": ["blog.mudit.xyz", "www.blog.mudit.xyz"],
+  "alias": ["preview.blog.mudit.xyz"],
   "public": false,
   "routes": [
     {
@@ -16,12 +16,10 @@
   ],
   "build": {
     "env": {
-      "CDA_TOKEN": "@blog-cda-token",
       "CMA_TOKEN": "@blog-cma-token",
-      "SPACE_ID": "pe315guv55pz"
+      "PREVIEW_TOKEN": "@blog-preview-token",
+      "SPACE_ID": "pe315guv55pz",
+      "FORCE_PREVIEW": "true"
     }
-  },
-  "github": {
-    "enabled": true
   }
 }

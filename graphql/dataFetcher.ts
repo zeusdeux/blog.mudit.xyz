@@ -9,7 +9,7 @@ import {
 } from './types.generated'
 
 export const ctflConfig =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === 'production' && process.env.FORCE_PREVIEW !== 'true' // FORCE_PREVIEW to deploy a preview version from localhost
     ? {
         space: process.env.SPACE_ID!,
         accessToken: process.env.CDA_TOKEN! // comes from next.config.js and there from the env itself
