@@ -6,11 +6,11 @@ import A from './A'
 const Header = () => {
   return (
     <nav>
-      <A href="https://twitter.com/muditameta" title="Mudit’s Twitter" containsIcon>
+      <A href="https://twitter.com/muditameta" title="Mudit’s Twitter">
         <FaTwitter className="icon" />
       </A>
 
-      <A href="https://github.com/zeusdeux/blog.mudit.xyz" title="Mudit’s GitHub" containsIcon>
+      <A href="https://github.com/zeusdeux/blog.mudit.xyz" title="Mudit’s GitHub">
         <FaGithub className="icon" />
       </A>
 
@@ -36,6 +36,18 @@ const Header = () => {
             display: flex;
             justify-content: flex-end;
             padding: 2rem;
+          }
+
+          nav > :global(a:not(:last-child)) {
+            margin-right: 1rem;
+          }
+
+          nav > :global(a) {
+            display: flex;
+          }
+
+          nav > :global(a .icon) {
+            align-self: flex-end;
           }
         `}
       </style>

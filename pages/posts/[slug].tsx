@@ -3,8 +3,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Prism from 'prismjs'
 import React from 'react'
-import Markdown from 'react-markdown'
 import Layout from '../../components/Layout'
+import Markdown from '../../components/Markdown'
 import { getPost, getPosts } from '../../graphql/dataFetcher'
 import { GetPostQuery } from '../../graphql/types.generated'
 
@@ -72,7 +72,7 @@ ${post.body}`
         <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
-        <Markdown source={body} className="blog-post" linkTarget="_blank" escapeHtml={false} />
+        <Markdown source={body} className="blog-post" />
         <h2>🖖🏼</h2>
         <Nav post={post} />
       </div>
