@@ -9,9 +9,6 @@ import { getPost, getPosts } from '../../graphql/dataFetcher'
 import { GetPostQuery } from '../../graphql/types.generated'
 
 const Nav: React.FC<GetPostQuery> = ({ post }) => {
-  React.useEffect(() => {
-    Prism.highlightAll()
-  }, [])
   return (
     <>
       <nav>
@@ -60,6 +57,10 @@ const Nav: React.FC<GetPostQuery> = ({ post }) => {
   )
 }
 const PostPage: NextPage<GetPostQuery> = ({ post }) => {
+  React.useEffect(() => {
+    Prism.highlightAll()
+  }, [])
+
   const body = `# ${post.metadata.title}
 
 ${post.body}`
