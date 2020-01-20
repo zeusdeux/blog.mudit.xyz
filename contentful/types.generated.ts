@@ -37,6 +37,7 @@ export interface BlogPostFields {
     | 'blog'
     | 'next.js'
     | 'gatsby'
+    | 'Contentful'
   >
 
   /** Next */
