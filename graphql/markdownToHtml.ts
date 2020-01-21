@@ -1,6 +1,6 @@
 // @ts-nocheck
 import prism from '@mapbox/rehype-prism'
-import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
+// import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
 import link from 'rehype-autolink-headings'
 import raw from 'rehype-raw'
 import slug from 'rehype-slug'
@@ -11,17 +11,19 @@ import remark2rehype from 'remark-rehype'
 import unified from 'unified'
 
 export default function markdownToHtml(md) {
-  return unified()
-    .use(markdown)
-    .use(remark2rehype)
-    .use(raw)
-    .use(urls, updateAnchorAndImgNode)
-    .use(rehypeAccessibleEmojis)
-    .use(slug)
-    .use(link)
-    .use(prism)
-    .use(html)
-    .process(md)
+  return (
+    unified()
+      .use(markdown)
+      .use(remark2rehype)
+      .use(raw)
+      .use(urls, updateAnchorAndImgNode)
+      // .use(rehypeAccessibleEmojis)
+      .use(slug)
+      .use(link)
+      .use(prism)
+      .use(html)
+      .process(md)
+  )
 }
 
 function updateAnchorAndImgNode(url, node) {
