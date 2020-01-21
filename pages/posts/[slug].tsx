@@ -1,10 +1,8 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import Prism from 'prismjs'
 import React from 'react'
 import Layout from '../../components/Layout'
-import Markdown from '../../components/Markdown'
 import { getPost, getPosts } from '../../graphql/dataFetcher'
 import { GetPostQuery } from '../../graphql/types.generated'
 
@@ -57,14 +55,6 @@ const Nav: React.FC<GetPostQuery> = ({ post }) => {
   )
 }
 const PostPage: NextPage<GetPostQuery> = ({ post }) => {
-  React.useEffect(() => {
-    Prism.highlightAll()
-  }, [])
-
-  const body = `# ${post.metadata.title}
-
-${post.body}`
-
   return (
     <Layout>
       <Head>
@@ -73,7 +63,7 @@ ${post.body}`
         <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
-        <Markdown source={body} className="blog-post" />
+        <article className="blog-post" dangerouslySetInnerHTML={{ __html: post.body }} />
         <h2>🖖🏼</h2>
         <Nav post={post} />
       </div>
@@ -88,7 +78,7 @@ ${post.body}`
             padding: 2rem calc(100% / 10);
           }
 
-          :global(.blog-post) {
+          article {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -96,27 +86,27 @@ ${post.body}`
             width: 100%;
           }
 
-          :global(.blog-post blockquote) {
+          :global(article.blog-post blockquote) {
             font-style: italic;
           }
 
-          :global(.blog-post blockquote > *:before) {
+          :global(article.blog-post blockquote > *:before) {
             content: '“';
           }
 
-          :global(.blog-post blockquote > *:after) {
+          :global(article.blog-post blockquote > *:after) {
             content: '”';
           }
 
-          :global(.blog-post img) {
+          :global(article.blog-post img) {
             width: 100%;
           }
 
-          :global(.blog-post pre) {
+          :global(article.blog-post pre) {
             width: 100%;
           }
 
-          :global(.blog-post p) {
+          :global(article.blog-post p) {
             width: 100%;
           }
         `}
