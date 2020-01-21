@@ -19,7 +19,7 @@ export default function markdownToHtml(md) {
       .use(urls, updateAnchorAndImgNode)
       // .use(rehypeAccessibleEmojis)
       .use(slug)
-      .use(link)
+      .use(link, { behavior: 'wrap', properties: { className: 'permalink' } })
       .use(prism)
       .use(html)
       .process(md)

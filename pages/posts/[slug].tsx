@@ -109,6 +109,11 @@ const PostPage: NextPage<GetPostQuery> = ({ post }) => {
           :global(article.blog-post p) {
             width: 100%;
           }
+
+          :global(article.blog-post a.permalink) {
+            color: inherit;
+            text-decoration: none;
+          }
         `}
       </style>
     </Layout>
