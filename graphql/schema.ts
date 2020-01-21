@@ -1,6 +1,7 @@
 import { getQueryRunner, gql } from '@zeusdeux/serverless-graphql'
 import { ContentfulClientApi } from 'contentful'
 import { BlogPostFields } from '../contentful/types.generated'
+import mdToHtml from './markdownToHtml'
 import { Post, PostMetadata, Query } from './types.generated'
 
 export const typeDefs = gql`
@@ -56,27 +57,32 @@ export const resolvers = {
       })
 
       // TODO: build the previous and next fields out correctly
-      const result: Post[] = posts.items.map(post => {
-        return {
-          metadata: {
-            id: post.sys.id,
-            slug: post.fields.slug,
-            title: post.fields.title
-          },
-          body: post.fields.body,
-          tags: post.fields.tags,
-          previous: post.fields.previous && {
-            id: post.fields.previous.sys.id,
-            slug: post.fields.previous.fields.slug,
-            title: post.fields.previous.fields.title
-          },
-          next: post.fields.next && {
-            id: post.fields.next.sys.id,
-            slug: post.fields.next.fields.slug,
-            title: post.fields.next.fields.title
+      const result: Post[] = await Promise.all(
+        posts.items.map(async post => {
+          const { contents } = await mdToHtml(`# ${post.fields.title}
+
+${post.fields.body}`)
+          return {
+            metadata: {
+              id: post.sys.id,
+              slug: post.fields.slug,
+              title: post.fields.title
+            },
+            body: contents.toString(),
+            tags: post.fields.tags,
+            previous: post.fields.previous && {
+              id: post.fields.previous.sys.id,
+              slug: post.fields.previous.fields.slug,
+              title: post.fields.previous.fields.title
+            },
+            next: post.fields.next && {
+              id: post.fields.next.sys.id,
+              slug: post.fields.next.fields.slug,
+              title: post.fields.next.fields.title
+            }
           }
-        }
-      })
+        })
+      )
       return result[0]
     }
   }

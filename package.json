@@ -27,6 +27,7 @@
   "author": "Mudit Ameta <zeusdeux@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.4.0",
     "@zeusdeux/serverless-graphql": "0.0.16",
     "contentful": "^7.11.3",
     "graphql": "^14.5.8",
@@ -35,7 +36,15 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-icons": "^3.8.0",
-    "react-markdown": "^4.2.2"
+    "rehype-accessible-emojis": "^0.3.2",
+    "rehype-autolink-headings": "^2.0.5",
+    "rehype-raw": "^4.0.1",
+    "rehype-slug": "^2.0.3",
+    "rehype-stringify": "^6.0.1",
+    "rehype-urls": "^1.1.1",
+    "remark-parse": "^7.0.2",
+    "remark-rehype": "^5.0.0",
+    "unified": "^8.4.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.11.2",
@@ -47,7 +56,6 @@
     "@types/react-dom": "^16.9.4",
     "@zeusdeux/contentful-typescript-codegen": "0.0.1",
     "apollo-server": "^2.9.15",
-    "babel-plugin-prismjs": "^2.0.1",
     "contentful-management": "^5.12.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
