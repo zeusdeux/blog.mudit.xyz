@@ -35,13 +35,8 @@ const Index: NextPage<GetPostsQuery> = ({ posts }) => {
             padding: 2rem calc(100% / 10);
           }
 
-          li > a {
-            display: inline-block;
-            width: calc(100vw / 2);
-            max-width: 25rem;
-            white-space: nowrap;
-            overflow-x: hidden;
-            text-overflow: ellipsis;
+          li {
+            margin: 0.5rem 0;
           }
         `}
       </style>
