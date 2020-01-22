@@ -32,6 +32,9 @@ export default function markdownToHtml(md) {
         headings: ['h2', 'h3'],
         position: 1,
         customizeTOC(node) {
+          // wrap the toc inside <details></details> to make it
+          // collapsible. <summary></summary> shows the text
+          // that is shown when the ToC are collapsed.
           return {
             type: 'element',
             tagName: 'details',
