@@ -28,7 +28,7 @@
   "license": "ISC",
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
-    "@zeusdeux/rehype-toc": "^2.2.4",
+    "@zeusdeux/rehype-toc": "^2.2.5",
     "@zeusdeux/serverless-graphql": "0.0.16",
     "contentful": "^7.11.3",
     "graphql": "^14.5.8",
