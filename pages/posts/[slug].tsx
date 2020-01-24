@@ -75,7 +75,7 @@ const PostPage: NextPage<GetPostQuery> = ({ post }) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem calc(100% / 10);
+            padding: 0 calc(100% / 15) 2rem;
           }
 
           article {
