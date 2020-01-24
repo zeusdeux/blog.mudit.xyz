@@ -60,6 +60,8 @@ const PostPage: NextPage<GetPostQuery> = ({ post }) => {
       <Head>
         <title>Mudit’s Blog - {post.metadata.title}</title>
         <meta name="description" content={post.metadata.title} />
+        <meta property="og:description" content={post.metadata.title} />
+        <meta name="twitter:description" content={post.metadata.title} />
         <meta name="keywords" content={post.tags.join(', ')} />
       </Head>
       <div>
