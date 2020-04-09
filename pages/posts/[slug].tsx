@@ -124,7 +124,7 @@ const PostPage: NextPage<GetPostQuery> = ({ post }) => {
 
 // TODO: Replace context: any with a type that comes from next
 // once getStaticProps stabilizes.
-export async function unstable_getStaticProps(context: any) {
+export async function getStaticProps(context: any) {
   const slug = (context.params.slug as unknown) as string
 
   const post = await getPost({ slug })
@@ -134,12 +134,15 @@ export async function unstable_getStaticProps(context: any) {
   }
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const { posts } = await getPosts()
 
-  return posts.map(({ slug }) => ({
-    params: { slug }
-  }))
+  return {
+    paths: posts.map(({ slug }) => ({
+      params: { slug }
+    })),
+    fallback: false
+  }
 }
 
 export default PostPage

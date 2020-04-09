@@ -44,7 +44,7 @@ const Index: NextPage<GetPostsQuery> = ({ posts }) => {
   )
 }
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   const posts = await getPosts()
 
   return {
