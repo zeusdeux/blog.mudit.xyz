@@ -39,7 +39,7 @@ Latin Modern (LaTeX default) font */
   font-display: swap;
 }
 :root {
-  --bg-cold: #f7f7f7;
+  --bg-cold: #18181b;
   --bg-warm: #f7f3eb;
   --bg-warmer: #f7eddb;
   --link: #a00;
@@ -151,7 +151,7 @@ pre[class*='language-'],
 }
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: var(--color);
+    background-color: var(--bg-cold);
     color: var(--bg-warm);
   }
   a,
