@@ -38,6 +38,15 @@ export interface BlogPostFields {
     | 'next.js'
     | 'gatsby'
     | 'Contentful'
+    | 'github'
+    | 'ci'
+    | 'github actions'
+    | 'emacs'
+    | 'emoji'
+    | 'unicode'
+    | 'macos'
+    | 'gnu'
+    | 'daemon'
   >
 
   /** Next */
