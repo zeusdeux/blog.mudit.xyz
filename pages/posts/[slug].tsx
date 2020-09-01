@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
@@ -126,10 +126,8 @@ const PostPage: NextPage<GetPostQuery> = ({ post }) => {
   )
 }
 
-// TODO: Replace context: any with a type that comes from next
-// once getStaticProps stabilizes.
-export async function getStaticProps(context: any) {
-  const slug = (context.params.slug as unknown) as string
+export const getStaticProps: GetStaticProps = async context => {
+  const slug = (context.params?.slug ?? '') as string
 
   const post = await getPost({ slug })
 
@@ -138,7 +136,7 @@ export async function getStaticProps(context: any) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { posts } = await getPosts()
 
   return {
