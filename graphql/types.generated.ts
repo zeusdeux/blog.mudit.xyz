@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string
@@ -34,16 +35,16 @@ export interface QueryPostArgs {
   slug: Scalars['String']
 }
 
-export type GetPostsQueryVariables = {}
+export type GetPostsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPostsQuery = {
   __typename?: 'Query'
   posts: Array<{ __typename?: 'PostMetadata'; id: string; slug: string; title: string }>
 }
 
-export type GetPostQueryVariables = {
+export type GetPostQueryVariables = Exact<{
   slug: Scalars['String']
-}
+}>
 
 export type GetPostQuery = {
   __typename?: 'Query'
@@ -52,7 +53,7 @@ export type GetPostQuery = {
     body: string
     tags: Array<string>
     metadata: { __typename?: 'PostMetadata'; id: string; slug: string; title: string }
-    previous: Maybe<{ __typename?: 'PostMetadata'; id: string; slug: string; title: string }>
-    next: Maybe<{ __typename?: 'PostMetadata'; id: string; slug: string; title: string }>
+    previous?: Maybe<{ __typename?: 'PostMetadata'; id: string; slug: string; title: string }>
+    next?: Maybe<{ __typename?: 'PostMetadata'; id: string; slug: string; title: string }>
   }
 }

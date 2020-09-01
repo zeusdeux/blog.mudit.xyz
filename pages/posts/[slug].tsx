@@ -1,4 +1,4 @@
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
