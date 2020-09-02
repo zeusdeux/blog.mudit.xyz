@@ -4,16 +4,6 @@
   "scope": "zdx",
   "alias": ["blog.mudit.xyz", "www.blog.mudit.xyz"],
   "public": false,
-  "routes": [
-    {
-      "src": "/posts/?",
-      "status": 301,
-      "headers": {
-        "Location": "/"
-      },
-      "continue": false
-    }
-  ],
   "build": {
     "env": {
       "CDA_TOKEN": "@blog-cda-token",
