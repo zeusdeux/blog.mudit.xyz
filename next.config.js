@@ -1,5 +1,6 @@
 module.exports = {
   trailingSlash: false,
+  analyticsId: 'pcquf89ndtoWACuTitkHAfuKwst',
   env: {
     CDA_TOKEN: process.env.CDA_TOKEN,
     PREVIEW_TOKEN: process.env.PREVIEW_TOKEN,
