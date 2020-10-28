@@ -17,7 +17,7 @@
     "generate-types-from-ctfl": "contentful-typescript-codegen -c blogPost -o contentful/types.generated.ts",
     "generate-types": "run-p generate-types-from-ctfl generate-types-from-gql-schema",
     "dev-all": "run-p typecheck:watch dev generate-types-from-gql-schema:watch generate-types-from-ctfl",
-    "deploy-preview": "now --force --no-clipboard --prod --local-config=now.preview.json"
+    "deploy-preview": "now --force --no-clipboard --target production --local-config=now.preview.json"
   },
   "keywords": [
     "blog",
