@@ -53,3 +53,5 @@ export async function getStaticProps() {
 }
 
 export default Index
+
+export const config = { unstable_runtimeJS: false }

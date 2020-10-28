@@ -49,3 +49,5 @@ gtag('config', 'UA-59474035-2');
 }
 
 export default MyApp
+
+export const config = { unstable_runtimeJS: false }

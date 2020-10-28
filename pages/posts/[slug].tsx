@@ -148,3 +148,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export default PostPage
+
+export const config = { unstable_runtimeJS: false }
