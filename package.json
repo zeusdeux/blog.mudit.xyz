@@ -56,7 +56,7 @@
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "@zeusdeux/contentful-typescript-codegen": "0.0.1",
-    "apollo-server": "^2.14.2",
+    "apollo-server": "^2.25.3",
     "contentful-management": "^5.28.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
